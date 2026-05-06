@@ -56,7 +56,9 @@ export default function PartCard({ part, onEdit, onDelete }: PartCardProps) {
               {part.stock}
             </span>
             {isLowStock && (
-              <AlertTriangle className="h-4 w-4 text-orange-500" title="Stock bajo" />
+              <span title="Stock bajo">
+                <AlertTriangle className="h-4 w-4 text-orange-500" />
+              </span>
             )}
           </div>
         </div>
