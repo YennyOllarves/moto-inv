@@ -69,6 +69,14 @@ export default function Home() {
     }
   };
 
+  const handleSave = async (data: CreatePartData | UpdatePartData) => {
+    if (editingPart) {
+      await handleUpdatePart(data as UpdatePartData);
+    } else {
+      await handleCreatePart(data as CreatePartData);
+    }
+  };
+
   const handleDeletePart = async (id: string) => {
     try {
       await PartsDatabase.deletePart(id);
@@ -229,7 +237,7 @@ export default function Home() {
         <PartModal
           part={editingPart}
           onClose={closeModal}
-          onSave={editingPart ? handleUpdatePart : handleCreatePart}
+          onSave={handleSave}
         />
       )}
     </div>
