@@ -1,4 +1,6 @@
-import { supabase } from './supabase'
+import { getSupabaseClient } from './supabase'
+
+const supabase = getSupabaseClient()
 
 export async function testSupabaseConnection() {
   try {
