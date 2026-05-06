@@ -1,9 +1,10 @@
-import { supabase } from './supabase'
+import { getSupabaseClient } from './supabase'
 import { MotoPart, CreatePartData, UpdatePartData } from '@/types'
 
 export class PartsDatabase {
   static async getParts(): Promise<MotoPart[]> {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('repuestos')
         .select('*')
@@ -23,6 +24,7 @@ export class PartsDatabase {
 
   static async savePart(partData: CreatePartData): Promise<MotoPart | null> {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('repuestos')
         .insert([partData])
@@ -45,6 +47,7 @@ export class PartsDatabase {
     try {
       const { id, ...updateData } = partData
       
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('repuestos')
         .update(updateData)
@@ -66,6 +69,7 @@ export class PartsDatabase {
 
   static async deletePart(id: string): Promise<boolean> {
     try {
+      const supabase = getSupabaseClient()
       const { error } = await supabase
         .from('repuestos')
         .delete()
@@ -85,6 +89,7 @@ export class PartsDatabase {
 
   static async getPartById(id: string): Promise<MotoPart | null> {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('repuestos')
         .select('*')
@@ -105,6 +110,7 @@ export class PartsDatabase {
 
   static async searchParts(query: string): Promise<MotoPart[]> {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('repuestos')
         .select('*')
@@ -125,6 +131,7 @@ export class PartsDatabase {
 
   static async getPartsByCategory(category: string): Promise<MotoPart[]> {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('repuestos')
         .select('*')
@@ -145,6 +152,7 @@ export class PartsDatabase {
 
   static async getPartsByBrand(brand: string): Promise<MotoPart[]> {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('repuestos')
         .select('*')

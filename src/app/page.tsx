@@ -1,5 +1,7 @@
 'use client';
 
+export const dynamic = 'force-dynamic';
+
 import { useState, useEffect } from 'react';
 import { Plus, Search, Wrench, Package, DollarSign, AlertTriangle } from 'lucide-react';
 import { MotoPart, CreatePartData, UpdatePartData } from '@/types';
