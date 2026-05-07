@@ -24,7 +24,11 @@ export class PartsDatabase {
 
   static async savePart(partData: CreatePartData): Promise<MotoPart | null> {
     try {
+      console.log('🔍 Intentando guardar repuesto:', partData);
+      
       const supabase = getSupabaseClient()
+      console.log('✅ Cliente Supabase obtenido');
+      
       const { data, error } = await supabase
         .from('repuestos')
         .insert([partData])
@@ -32,13 +36,21 @@ export class PartsDatabase {
         .single()
 
       if (error) {
-        console.error('Error creating part:', error)
+        console.error('❌ Error creating part:', error)
+        console.error('Error details:', {
+          message: error.message,
+          code: error.code,
+          details: error.details,
+          hint: error.hint
+        })
         return null
       }
 
+      console.log('✅ Repuesto guardado exitosamente:', data);
       return data
-    } catch (error) {
-      console.error('Error creating part:', error)
+    } catch (error: any) {
+      console.error('❌ Error creating part:', error)
+      console.error('Stack trace:', error.stack);
       return null
     }
   }

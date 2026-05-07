@@ -52,11 +52,21 @@ export default function Home() {
 
   const handleCreatePart = async (partData: CreatePartData) => {
     try {
-      await PartsDatabase.savePart(partData);
-      loadParts();
-      setIsModalOpen(false);
+      console.log('🚀 handleCreatePart llamado con:', partData);
+      const result = await PartsDatabase.savePart(partData);
+      console.log('📊 Resultado de savePart:', result);
+      
+      if (result) {
+        console.log('✅ Recargando partes y cerrando modal');
+        await loadParts();
+        setIsModalOpen(false);
+      } else {
+        console.error('❌ savePart retornó null');
+        alert('Error al guardar el repuesto. Revisa la consola para más detalles.');
+      }
     } catch (error) {
-      console.error('Error creating part:', error);
+      console.error('❌ Error en handleCreatePart:', error);
+      alert('Error al guardar el repuesto. Revisa la consola para más detalles.');
     }
   };
 

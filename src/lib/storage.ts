@@ -85,7 +85,7 @@ export class PartsStorage {
     return parts.filter(part => 
       part.name.toLowerCase().includes(lowercaseQuery) ||
       part.sku.toLowerCase().includes(lowercaseQuery) ||
-      part.motorcycleBrand.toLowerCase().includes(lowercaseQuery) ||
+      part.motorcycle_brand.toLowerCase().includes(lowercaseQuery) ||
       part.category.toLowerCase().includes(lowercaseQuery)
     );
   }
@@ -97,6 +97,6 @@ export class PartsStorage {
 
   static getPartsByBrand(brand: string): MotoPart[] {
     const parts = this.getParts();
-    return parts.filter(part => part.motorcycleBrand === brand);
+    return parts.filter(part => part.motorcycle_brand === brand);
   }
 }
