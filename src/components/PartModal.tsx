@@ -17,7 +17,7 @@ export default function PartModal({ part, onClose, onSave }: PartModalProps) {
   const [formData, setFormData] = useState<CreatePartData>({
     name: '',
     sku: '',
-    motorcycleBrand: '',
+    motorcycle_brand: '',
     category: '',
     stock: 0,
     price: 0,
@@ -30,7 +30,7 @@ export default function PartModal({ part, onClose, onSave }: PartModalProps) {
       setFormData({
         name: part.name,
         sku: part.sku,
-        motorcycleBrand: part.motorcycleBrand,
+        motorcycle_brand: part.motorcycle_brand,
         category: part.category,
         stock: part.stock,
         price: part.price,
@@ -39,7 +39,7 @@ export default function PartModal({ part, onClose, onSave }: PartModalProps) {
       setFormData({
         name: '',
         sku: '',
-        motorcycleBrand: '',
+        motorcycle_brand: '',
         category: '',
         stock: 0,
         price: 0,
@@ -59,8 +59,8 @@ export default function PartModal({ part, onClose, onSave }: PartModalProps) {
       newErrors.sku = 'El SKU es requerido';
     }
 
-    if (!formData.motorcycleBrand) {
-      newErrors.motorcycleBrand = 'La marca de moto es requerida';
+    if (!formData.motorcycle_brand) {
+      newErrors.motorcycle_brand = 'La marca de moto es requerida';
     }
 
     if (!formData.category) {
@@ -155,10 +155,10 @@ export default function PartModal({ part, onClose, onSave }: PartModalProps) {
               Marca de Moto
             </label>
             <select
-              value={formData.motorcycleBrand}
-              onChange={(e) => handleChange('motorcycleBrand', e.target.value)}
+              value={formData.motorcycle_brand}
+              onChange={(e) => handleChange('motorcycle_brand', e.target.value)}
               className={`w-full px-3 py-2 bg-gray-700 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-                errors.motorcycleBrand ? 'border-red-500' : 'border-gray-600'
+                errors.motorcycle_brand ? 'border-red-500' : 'border-gray-600'
               }`}
             >
               <option value="">Seleccionar marca</option>
@@ -166,8 +166,8 @@ export default function PartModal({ part, onClose, onSave }: PartModalProps) {
                 <option key={brand} value={brand}>{brand}</option>
               ))}
             </select>
-            {errors.motorcycleBrand && (
-              <p className="text-red-400 text-sm mt-1">{errors.motorcycleBrand}</p>
+            {errors.motorcycle_brand && (
+              <p className="text-red-400 text-sm mt-1">{errors.motorcycle_brand}</p>
             )}
           </div>
 

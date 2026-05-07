@@ -2,7 +2,7 @@ export interface MotoPart {
   id: string;
   name: string;
   sku: string;
-  motorcycleBrand: string;
+  motorcycle_brand: string;
   category: string;
   stock: number;
   price: number;
@@ -11,7 +11,7 @@ export interface MotoPart {
 export interface CreatePartData {
   name: string;
   sku: string;
-  motorcycleBrand: string;
+  motorcycle_brand: string;
   category: string;
   stock: number;
   price: number;

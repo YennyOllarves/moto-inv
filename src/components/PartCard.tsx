@@ -41,7 +41,7 @@ export default function PartCard({ part, onEdit, onDelete }: PartCardProps) {
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <span className="text-gray-400 text-sm">Marca:</span>
-          <span className="text-white font-medium">{part.motorcycleBrand}</span>
+          <span className="text-white font-medium">{part.motorcycle_brand}</span>
         </div>
 
         <div className="flex justify-between items-center">
